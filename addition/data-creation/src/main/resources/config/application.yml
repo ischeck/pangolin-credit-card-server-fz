@@ -1,0 +1,19 @@
+management:
+    context-path: /data-create-api
+spring:
+    application:
+        name: data-create-service
+    profiles:
+      active: @spring.profiles.active@
+    jackson:
+        serialization.write_dates_as_timestamps: true
+    http:
+      encoding:
+        enabled: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

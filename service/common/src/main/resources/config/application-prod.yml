@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: prod
+    include: swagger
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false # we use gulp + BrowserSync for livereload
+  jackson:
+    serialization.indent_output: true
+  data:
+    mongodb:
+      uri: mongodb://10.10.1.22:27017
+      database: new_pangolin_common_db
+  rabbitmq:
+    username: faxin
+    password: faxin
+    host: 10.10.1.22
+    virtual-host: faxin
+    port: 5672
+  redis:
+    database: 0
+    host: 10.10.1.22
+    port: 6379
+  boot:
+    admin:
+      client:
+        url: http://10.10.1.22:8762
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+file:
+  dir: /data/files
+  base-url: http://10.10.1.22:9000/uploadFile/
+eureka:
+  instance:
+    hostname: common-service
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 9004

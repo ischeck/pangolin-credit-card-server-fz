@@ -1,0 +1,21 @@
+spring:
+    application:
+        name: domain-service
+    profiles:
+      active: @spring.profiles.active@
+    jackson:
+        serialization.write_dates_as_timestamps: true
+    mvc:
+        favicon:
+            enabled: false
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 720000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

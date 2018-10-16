@@ -1,0 +1,25 @@
+spring:
+    application:
+        name: common-service
+    profiles:
+      active: @spring.profiles.active@
+    jackson:
+        serialization.write_dates_as_timestamps: true
+    mvc:
+        favicon:
+            enabled: false
+    servlet:
+        multipart:
+          max-file-size: 150MB
+          max-request-size: 150MB
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 720000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

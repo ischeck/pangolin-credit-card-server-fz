@@ -1,0 +1,45 @@
+spring:
+    profiles:
+        active: local
+    devtools:
+        restart:
+            enabled: true
+        livereload:
+            enabled: false # we use gulp + BrowserSync for livereload
+    jackson:
+        serialization.indent_output: true
+    data:
+       elasticsearch:
+         cluster-nodes: 127.0.0.1:9300
+         clusterName: elasticsearch
+
+    rabbitmq:
+        username: fuzhou
+        password: fuzhou
+        host: 127.0.0.1
+        virtual-host: fuzhou
+        port: 5672
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+    boot:
+      admin:
+        client:
+          url: http://localhost:8762
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+  instance:
+    hostname: dataimp-service
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+server:
+    port: 9002

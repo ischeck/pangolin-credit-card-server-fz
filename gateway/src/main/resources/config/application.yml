@@ -1,0 +1,41 @@
+spring:
+    application:
+        name: gateway-service
+    profiles:
+      active: @spring.profiles.active@
+    servlet:
+      multipart:
+          max-file-size: 150MB
+          max-request-size: 150MB
+server:
+  tomcat:
+    accept-count: 2000
+    max-threads: 2000
+    max-connections: 2000
+zuul:
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+    max-total-connections: 2000
+    max-per-route-connections: 2000
+  #  ribbon-isolation-strategy: thread
+  semaphore:
+    max-semaphores: 2000
+ribbon:
+  #对当前实例的重试次数
+  MaxAutoRetries: 1
+  #切换实例的重试次数
+  MaxAutoRetriesNextServer: 2
+  #请求处理的超时时间
+  ReadTimeout: 60000
+  #请求连接的超时时间
+  ConnectTimeout: 60000
+  #对所有操作请求都进行重试
+  OkToRetryOnAllOperations: true
+hystrix: #hystrix配置
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: test
+    include: swagger
+  jackson:
+    serialization.indent_output: true
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
+      clusterName: elasticsearch
+    mongodb:
+      uri: mongodb://127.0.0.1:27017
+      database: new_pangolin_management_db
+
+server:
+  port: 8763
